@@ -1,0 +1,7 @@
+{
+  "name": "ParkWise Green",
+  "description": "An AI-powered smart parking system for Chennai that prioritizes eco-friendly vehicles and tracks CO2 emission savings to promote sustainable urban mobility.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
