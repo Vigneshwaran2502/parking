@@ -2,9 +2,11 @@
 import { GoogleGenAI } from "@google/genai";
 
 // Always use the API key directly from process.env.API_KEY as per instructions.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || "";
+const ai: any = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getGreenAdvice = async (userProfile: string) => {
+  if (!ai) return "Keep driving green! Every km saved counts toward a cleaner Chennai.";
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -18,6 +20,7 @@ export const getGreenAdvice = async (userProfile: string) => {
 };
 
 export const analyzeBookingImpact = async (bookingDetails: any) => {
+  if (!ai) return "Your choice helps reduce traffic idling in T. Nagar, contributing to a cooler city.";
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
